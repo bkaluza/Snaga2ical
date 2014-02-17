@@ -60,6 +60,14 @@ class Snaga2ical(object):
 
 
 
+URL = "http://www.mojiodpadki.si/mojiodpadki/zemljevid/getbins/lat/46.05151/lng/14.50594019999994"
+ADDR = "MALA ULICA 3"
+
+
+app = Flask(__name__)
+snaga_bins = Snaga2ical(URL, ADDR)
+
+
 @app.route('/')
 def get_calendar():
 
@@ -69,15 +77,7 @@ def get_calendar():
                     mimetype="text/calendar",
                     headers={"Content-Disposition": "attachment;filename=snaga.ical"})
 
-
-
-URL = "http://www.mojiodpadki.si/mojiodpadki/zemljevid/getbins/lat/46.05151/lng/14.50594019999994"
-ADDR = "MALA ULICA 3"
-
-
-app = Flask(__name__)
-snaga_bins = Snaga2ical(URL, ADDR)
-
+    
 if __name__ == '__main__':
     #app.debug = True
     app.run(host="0.0.0.0")
